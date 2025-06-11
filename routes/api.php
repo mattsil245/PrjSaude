@@ -22,3 +22,4 @@ Route::get('/usuarios', [UsuarioController::class,'indexApi']);
 Route::post('/usuarios', [UsuarioController::class,'storeApi']);
 Route::put('/usuarios/{id}', [UsuarioController::class,'updateApi']);   // PUT para atualizar
 Route::delete('/usuarios/{id}', [UsuarioController::class,'destroyApi']); // DELETE para deletar
+Route::post('/login', [UsuarioController::class, 'login']);

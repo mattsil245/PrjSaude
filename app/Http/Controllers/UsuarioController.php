@@ -92,5 +92,19 @@ class UsuarioController extends Controller
             'message' => 'Usuário deletado com sucesso'
         ], 200);
     }
+    
+    public function login(Request $request)
+    {
+        $email = $request->input('email');
+        $senha = $request->input('senha');
+
+        $usuario = Usuario::where('email', $email)->first();
+
+        if (!$usuario || $usuario->senha !== $senha) { // Você deve usar Hash aqui se a senha estiver criptografada
+            return response()->json(['message' => 'Usuário ou senha incorretos'], 401);
+        }
+
+        return response()->json($usuario);
+    }
 }
 
